@@ -1,0 +1,39 @@
+#body{
+    background-color: rgb(83, 134, 136);
+}
+
+:root {
+    --grid-cols: 1;
+    --grid-rows: 1;
+  }
+  
+  #container {
+    display: grid;
+    background-color: rgb(83, 134, 136);
+    grid-template-rows: repeat(var(--grid-rows), 0fr);
+    grid-template-columns: repeat(var(--grid-cols), 0fr);
+    justify-content: center;
+    margin-top: 5%;
+    margin-left: 30.5%;
+    margin-right: 30.5%;
+    } 
+  
+  
+  .grid-item {
+    display: grid;
+    border: 1px solid rgb(0, 0, 0);
+    width: 2em;
+    height: 2em;
+  }
+
+  .colorHover {
+    background-color: blue;
+  }
+
+  .defaultColor {
+    background-color: rgb(83, 134, 136);
+  }
+
+  #buttonContainer {
+   text-align:  center; 
+  }
