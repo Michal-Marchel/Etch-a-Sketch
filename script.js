@@ -1,11 +1,19 @@
 const container = document.getElementById("container");
-let button = document.getElementById("buttonContainer");
+let button = document.getElementById("reset");
 let array = container.getElementsByTagName("div");
+let popUp = prompt("How many squares do you want?");
+let select = document.getElementById("color");
+let rgb = document.getElementById("rgb");
+let rand = false;
+makeRows(popUp);
+rgb.addEventListener("click", () => {
+  rand = true;
+});
 
-function makeRows(rows, cols) {
+function makeRows(rows) {
   container.style.setProperty('--grid-rows', rows);
-  container.style.setProperty('--grid-cols', cols);
-  for (i = 0; i < (rows * cols); i++) {
+  container.style.setProperty('--grid-cols', rows);
+  for (i = 0; i < (rows * rows); i++) {
     let cell = document.createElement("div");
     cell.innerText = " ";
     container.appendChild(cell).className = "grid-item";
@@ -13,15 +21,41 @@ function makeRows(rows, cols) {
 };
 
 container.addEventListener('mouseover', (e) => {
-  e.target.classList.add("colorHover");
-})
+  if(rand === true){
+    e.target.style.backgroundColor = randomColor();
+  } else {
+    e.target.style.backgroundColor = "blue";
+  }
+});
 
 button.addEventListener('click', () => {
-  for (i = 0; i < array.length; i++) {
-    if (array[i].classList.contains("colorHover")){
-      array[i].classList.remove("colorHover")
-    }
+  rand = false;
+  popUp = prompt("How many squares do you want?");
+  if (popUp <= 100 && popUp > 0) {
+    makeRows(popUp);
+  }else {
+    popUp = prompt("The maximum is 100, choose lower number")
   }
+  container.innerHTML = "";
+  makeRows(popUp);
 })
 
-makeRows(16, 16);
+rgb.addEventListener('click', () => {
+  if (popUp <= 100 && popUp > 0) {
+    makeRows(popUp);
+  }else {
+    popUp = prompt("The maximum is 100, choose lower number")
+  }
+  container.innerHTML = "";
+  makeRows(popUp);
+});
+
+function randomColor(){
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+

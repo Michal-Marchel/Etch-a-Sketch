@@ -9,7 +9,7 @@
   
   #container {
     display: grid;
-    background-color: rgb(83, 134, 136);
+    background-color: rgb(83, 134, 136) !important;
     grid-template-rows: repeat(var(--grid-rows), 0fr);
     grid-template-columns: repeat(var(--grid-cols), 0fr);
     justify-content: center;
@@ -17,11 +17,10 @@
     margin-left: 30.5%;
     margin-right: 30.5%;
     } 
-  
-  
+
   .grid-item {
     display: grid;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid black;
     width: 2em;
     height: 2em;
   }
